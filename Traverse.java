@@ -5,7 +5,7 @@ import java.io.IOException;
 public class Traverse{
     public static void main(String [] args){
         try {
-            Scanner read = new Scanner(new File("jim-input.txt")); // remember to change this to input.txt before submission
+            Scanner read = new Scanner(new File("small-input.txt")); // remember to change this to input.txt before submission
             System.out.println("File has been read");
             int rows = read.nextInt();
             int columns = read.nextInt();
@@ -44,12 +44,11 @@ public class Traverse{
                 
             }
         adjacencyList[0].depthFirstSearch(adjacencyList[0]);
+        read.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-         
-
-    
     }
+    
 }

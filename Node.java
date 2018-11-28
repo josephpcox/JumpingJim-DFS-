@@ -1,5 +1,7 @@
 import java.util.*;
 
+import javax.management.ConstructorParameters;
+
 class Node{
     /* make everything public so that everything is accessable*/
     public int row; // the row the vertex is located 
@@ -9,13 +11,16 @@ class Node{
     public Node south;
     public Node east;
     public Node west;
-    public static int [][] grid; // pass the int as static so that it is shared accross all instances
+
+    // pass some variables as static so that it is shared accross all instances of the class
+    public static int [][] grid; 
     public static Node [] adjacentcyList;
     public static int row_size;
     public static int col_size;
     public boolean visited;
     public static Stack <String> dfs_stack;
 
+    // constructor that will instiate all the inital variables
     public Node(int row,int col,int value){
         this.row = row;
         this.col = col;
@@ -25,49 +30,55 @@ class Node{
         this.east =null;
         this.west = null;
         this.visited = false;
-        this.dfs_stack = new Stack();
+        dfs_stack = new Stack();
 
     }
-    public void setGrid(int grid[][],int row_size,int col_size){
-        this.grid=grid;
-        this.row_size = row_size;
-        this.col_size = col_size;
+    // This function is to input the grid ans utilize it for debugging
+    public void setGrid(int ingrid[][],int in_row_size,int in_col_size){
+        grid=ingrid;
+        row_size = in_row_size;
+        col_size = in_col_size;
     }
+    // just show the grid is complete and useful for initial debugging
     public void printGrid(){
         System.out.println("printing the grid");
-        for(int i=0;i<this.row_size;i++){
-            for(int j = 0;j<this.col_size;j++){
-                System.out.println(this.grid[i][j]);
+        for(int i=0;i<row_size;i++){
+            for(int j = 0;j<col_size;j++){
+                System.out.println(grid[i][j]);
             }
         }
     }
-    public void setList(Node adjacentcyList[]){
-        this.adjacentcyList = adjacentcyList;
+    // pass in the initial adjacency list and continue to build it in the class
+    public void setList(Node in_adjacentcyList[]){
+        adjacentcyList = in_adjacentcyList;
     }
+    // ability to print the adjacency list for debugging 
     public void printList(){
         System.out.println("Printing the list");
-        for(int i = 0; i<this.adjacentcyList.length;i++){
-            System.out.println(this.adjacentcyList[i].value);
+        for(int i = 0; i<adjacentcyList.length;i++){
+            System.out.println(adjacentcyList[i].value);
         }
     }
+    // calculate all the neighbors of each individual node in the adjacency list
     public void getNeighbors(){
         // North 
         if(this.row - this.value>=0){
-            this.north = adjacentcyList[((this.row - this.value)*this.col_size)+col];
+            this.north = adjacentcyList[((this.row - this.value)*col_size)+col];
         }
         // South
-        if(this.row + value<this.row_size){
-            this.south = adjacentcyList[((this.row+this.value)*this.row_size)+col];
+        if(this.row + value<row_size){
+            this.south = adjacentcyList[((this.row+this.value)*row_size)+col];
         }
         // East
-        if(this.col + this.value<this.col_size){
-            this.east = adjacentcyList[((this.col+this.value)+(this.row)*(this.col_size))];
+        if(this.col + this.value<col_size){
+            this.east = adjacentcyList[((this.col+this.value)+(this.row)*(col_size))];
         }
         // West
         if(this.col - this.value>=0){
-            this.west = adjacentcyList[((this.row*this.col_size)+(this.col - this.value))];
+            this.west = adjacentcyList[((this.row*col_size)+(this.col - this.value))];
         }
     }
+    // print the complete adjacency list
     public void printNeighbors(){
         if(this.north == null){
             System.out.print("North->Null | ");
@@ -93,13 +104,13 @@ class Node{
         else{
             System.out.print("West->"+this.west.value+" | ");
         }
-    
         
     }
+    // traverse the maze using depth first search and print the exit path 
     public void depthFirstSearch(Node vertex){
         vertex.visited = true;
-        if(vertex.row == vertex.row_size-1 && vertex.col == vertex.col_size-1){
-            System.out.println("Printing the stack");
+        if(vertex.row == row_size-1 && vertex.col == col_size-1){
+            System.out.println("Printing the stack:");
               while(!dfs_stack.isEmpty()){
                   System.out.println(dfs_stack.peek());
                   dfs_stack.pop();
@@ -111,24 +122,19 @@ class Node{
         }
         if(vertex.south!=null && vertex.south.visited==false){
             dfs_stack.push("S");
-            System.out.print(vertex.value);
             vertex.depthFirstSearch(vertex.south);
         }
         if(vertex.west !=null && vertex.west.visited ==false){
             dfs_stack.push("W");
-            System.out.print(vertex.value);
             vertex.depthFirstSearch(vertex.west);
         }
         if(vertex.east !=null && vertex.east.visited==false){
             dfs_stack.push("E");
-            System.out.print(vertex.value);
             vertex.depthFirstSearch(vertex.east);
         }
         if (!dfs_stack.isEmpty()){
             dfs_stack.pop();
         }
         return;
-        
-
     }
 }
