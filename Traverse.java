@@ -26,10 +26,6 @@ public class Traverse{
                     System.out.print(grid[i][j]);
                 }
             }
-            Jim jim = new Jim(grid,rows,columns);
-            
-            jim.printJim();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
