@@ -1,3 +1,8 @@
+/* Node.java
+*  @Author: Joseph Cox
+*  @Date: 10/28/18
+*/
+
 import java.io.File;
 import java.util.Scanner;
 import java.io.IOException;
@@ -5,7 +10,7 @@ import java.io.IOException;
 public class Traverse{
     public static void main(String [] args){
         try {
-            Scanner read = new Scanner(new File("small-input.txt")); // remember to change this to input.txt before submission
+            Scanner read = new Scanner(new File("jim-input.txt")); // remember to change this to input.txt before submission
             System.out.println("File has been read");
             int rows = read.nextInt();
             int columns = read.nextInt();

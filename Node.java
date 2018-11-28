@@ -1,3 +1,9 @@
+/*
+ * Node.java
+ * @Author: Joseph Cox
+ * @Date: 10/28/18
+ * ---------------------------------------------
+ */
 import java.util.*;
 
 import javax.management.ConstructorParameters;
@@ -14,11 +20,11 @@ class Node{
 
     // pass some variables as static so that it is shared accross all instances of the class
     public static int [][] grid; 
-    public static Node [] adjacentcyList;
-    public static int row_size;
+    public static Node [] adjacentcyList; // Stats as a 1D array of n*n values use pointers N,S,E,W to point to location for neighbors 
+    public static int row_size; // col_row size of the data should not change accrross the class
     public static int col_size;
-    public boolean visited;
-    public static Stack <String> dfs_stack;
+    public boolean visited; // mark a particular node as visited or not visited for the search
+    public static Stack <String> dfs_stack;// String stack to hold the direction of travel 
 
     // constructor that will instiate all the inital variables
     public Node(int row,int col,int value){
@@ -30,7 +36,7 @@ class Node{
         this.east =null;
         this.west = null;
         this.visited = false;
-        dfs_stack = new Stack();
+        dfs_stack = new Stack<String>();
 
     }
     // This function is to input the grid ans utilize it for debugging
