@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Node{
     /* make everything public so that everything is accessable*/
     public int row; // the row the vertex is located 
@@ -11,6 +13,9 @@ class Node{
     public static Node [] adjacentcyList;
     public static int row_size;
     public static int col_size;
+    public boolean visited;
+    public static Stack dfs_stack;
+
     public Node(int row,int col,int value){
         this.row = row;
         this.col = col;
@@ -19,6 +24,8 @@ class Node{
         this.south = null;
         this.east =null;
         this.west = null;
+        this.visited = false;
+        this.dfs_stack = new Stack();
 
     }
     public void setGrid(int grid[][],int row_size,int col_size){
@@ -57,8 +64,8 @@ class Node{
             this.east = adjacentcyList[((this.col+this.value)+(this.row)*(this.col_size))];
         }
         // West
-        if(this.col - this.value<=0){
-            this.west = adjacentcyList[((this.row)*(this.col_size)-(this.col - this.value))];
+        if(this.col - this.value>=0){
+            this.west = adjacentcyList[((this.row*this.col_size)+(this.col - this.value))];
         }
     }
     public void printNeighbors(){
@@ -88,5 +95,11 @@ class Node{
         }
     
         
+    }
+    public void DepthFirstSearch(){
+        while(this.row != row_size && this.col!=this.col_size){
+
+        }
+
     }
 }
