@@ -43,6 +43,7 @@ public class Traverse{
                 System.out.println("");
                 
             }
+        adjacencyList[0].depthFirstSearch(adjacencyList[0]);
         } catch (IOException e) {
             e.printStackTrace();
         }

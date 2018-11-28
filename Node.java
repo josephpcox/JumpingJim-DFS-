@@ -14,7 +14,7 @@ class Node{
     public static int row_size;
     public static int col_size;
     public boolean visited;
-    public static Stack dfs_stack;
+    public static Stack <String> dfs_stack;
 
     public Node(int row,int col,int value){
         this.row = row;
@@ -96,10 +96,39 @@ class Node{
     
         
     }
-    public void DepthFirstSearch(){
-        while(this.row != row_size && this.col!=this.col_size){
-
+    public void depthFirstSearch(Node vertex){
+        vertex.visited = true;
+        if(vertex.row == vertex.row_size-1 && vertex.col == vertex.col_size-1){
+            System.out.println("Printing the stack");
+              while(!dfs_stack.isEmpty()){
+                  System.out.println(dfs_stack.peek());
+                  dfs_stack.pop();
+            } 
         }
+        if(vertex.north!=null && vertex.north.visited==false){
+            dfs_stack.push("N");
+            vertex.depthFirstSearch(vertex.north);
+        }
+        if(vertex.south!=null && vertex.south.visited==false){
+            dfs_stack.push("S");
+            System.out.print(vertex.value);
+            vertex.depthFirstSearch(vertex.south);
+        }
+        if(vertex.west !=null && vertex.west.visited ==false){
+            dfs_stack.push("W");
+            System.out.print(vertex.value);
+            vertex.depthFirstSearch(vertex.west);
+        }
+        if(vertex.east !=null && vertex.east.visited==false){
+            dfs_stack.push("E");
+            System.out.print(vertex.value);
+            vertex.depthFirstSearch(vertex.east);
+        }
+        if (!dfs_stack.isEmpty()){
+            dfs_stack.pop();
+        }
+        return;
+        
 
     }
 }
