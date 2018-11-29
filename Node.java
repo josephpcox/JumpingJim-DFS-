@@ -23,6 +23,7 @@ class Node{
     public static int col_size;
     public boolean visited; // mark a particular node as visited or not visited for the search
     public static Stack <String> dfs_stack;// String stack to hold the direction of travel 
+    public static String exitPath;
 
     // constructor that will instiate all the inital variables
     public Node(int row,int col,int value){
@@ -35,6 +36,7 @@ class Node{
         this.west = null;
         this.visited = false;
         dfs_stack = new Stack<String>();
+        exitPath = " ";
 
     }
     // This function is to input the grid ans utilize it for debugging
@@ -116,9 +118,11 @@ class Node{
         if(vertex.row == row_size-1 && vertex.col == col_size-1){
             System.out.println("Printing the stack:");
               while(!dfs_stack.isEmpty()){
-                  System.out.println(dfs_stack.peek());
-                  dfs_stack.pop();
+                    System.out.println(dfs_stack.peek());
+                    exitPath +=dfs_stack.peek(); 
+                    dfs_stack.pop();
             } 
+            System.out.println("Exit Path in revese: "+exitPath);
         }
         if(vertex.north!=null && vertex.north.visited==false){
             dfs_stack.push("N");
@@ -140,5 +144,12 @@ class Node{
             dfs_stack.pop();
         }
         return;
+    }
+    public String get_dfs_exitPath(){
+        String exit = " "; // initialize the string to be returned not in reverse
+        for(int i=exitPath.length()-1;i>0;i--){
+            exit+=exitPath.charAt(i)+" ";
+        }
+        return exit;
     }
 }

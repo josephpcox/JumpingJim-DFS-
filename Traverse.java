@@ -3,7 +3,7 @@
 *  @Date: 10/28/18
 */
 
-import java.io.File;
+import java.io.*;
 import java.util.Scanner;
 import java.io.IOException;
 
@@ -11,6 +11,7 @@ public class Traverse{
     public static void main(String [] args){
         try {
             Scanner read = new Scanner(new File("jim-input.txt")); // remember to change this to input.txt before submission
+            BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
             System.out.println("File has been read");
             int rows = read.nextInt();
             int columns = read.nextInt();
@@ -49,8 +50,12 @@ public class Traverse{
                 
             }
         adjacencyList[0].depthFirstSearch(adjacencyList[0]);
+        System.out.println("Exit Path: "+ adjacencyList[0].get_dfs_exitPath());
+        writer.write(adjacencyList[0].get_dfs_exitPath());
+        writer.close();
         read.close();
-        } catch (IOException e) {
+        
+    } catch (IOException e) {
             e.printStackTrace();
         }
 

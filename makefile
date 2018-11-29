@@ -9,6 +9,9 @@ run:
 	java Traverse
 clean:
 	rm *.class
+cleanAll:
+	rm *.class
+	rm output.txt
 it:
 	$(MAKE)
 	$(MAKEIT) 
