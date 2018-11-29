@@ -10,7 +10,7 @@ import java.io.IOException;
 public class Traverse{
     public static void main(String [] args){
         try {
-            Scanner read = new Scanner(new File("jim-input.txt")); // remember to change this to input.txt before submission
+            Scanner read = new Scanner(new File("input.txt")); // remember to change this to input.txt before submission
             BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
             System.out.println("File has been read");
             int rows = read.nextInt();

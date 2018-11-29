@@ -122,7 +122,6 @@ class Node{
                     exitPath +=dfs_stack.peek(); 
                     dfs_stack.pop();
             } 
-            System.out.println("Exit Path in revese: "+exitPath);
         }
         if(vertex.north!=null && vertex.north.visited==false){
             dfs_stack.push("N");
@@ -146,7 +145,7 @@ class Node{
         return;
     }
     public String get_dfs_exitPath(){
-        String exit = " "; // initialize the string to be returned not in reverse
+        String exit = ""; // initialize the string to be returned not in reverse
         for(int i=exitPath.length()-1;i>0;i--){
             exit+=exitPath.charAt(i)+" ";
         }
