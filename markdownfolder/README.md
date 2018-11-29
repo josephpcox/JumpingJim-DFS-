@@ -1,5 +1,5 @@
-# Graph Modeling and Graph Algorithms Reademe
-## Joseph Cox
+# Graph Modeling and Graph Algorithms README
+## Joseph Cox (U00594912)
 
 ---
 # Files
@@ -7,6 +7,7 @@
 * makefile - Calling *make it* will compile and run the code, you could also use *javac Traverse.java* to compile and run it with *java Traverse* 
 * Node.java - This is the class that contains the functions that solve the problem including the dfs sfunction that travese the maze 
 * Traverse.java - This is the main() method it opens and writes the solution to the file.
+* markdownfolder -contains the README.md and the REPORT.md used to generate the REPORT.pdf and the README.html
 ---
 
 # makefile
