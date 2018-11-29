@@ -116,9 +116,7 @@ class Node{
     public void depthFirstSearch(Node vertex){
         vertex.visited = true;
         if(vertex.row == row_size-1 && vertex.col == col_size-1){
-            System.out.println("Printing the stack:");
               while(!dfs_stack.isEmpty()){
-                    System.out.println(dfs_stack.peek());
                     exitPath +=dfs_stack.peek(); 
                     dfs_stack.pop();
             } 

@@ -12,10 +12,8 @@ public class Traverse{
         try {
             Scanner read = new Scanner(new File("input.txt")); // remember to change this to input.txt before submission
             BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
-            System.out.println("File has been read");
             int rows = read.nextInt();
             int columns = read.nextInt();
-            System.out.println("Rows: "+ rows + " Columns: "+columns); 
             // Create a 2D array of Trampolines of size row and coloumns 
             int [][] grid = new int[rows][columns]; 
             for(int i = 0; i<rows;i++){
