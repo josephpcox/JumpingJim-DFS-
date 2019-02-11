@@ -1,5 +1,5 @@
 # Graph Modeling and Graph Algorithms README
-## Joseph Cox (U00594912)
+## Joseph Cox 
 
 ---
 # Files
